@@ -10,10 +10,10 @@ const getAi = () => {
   return new GoogleGenAI({ apiKey: process.env.API_KEY });
 };
 
-// Updated to use 'gemini-3-pro-image-preview' for all operations including search grounding and image generation as requested
-const TEXT_MODEL = 'gemini-3-pro-preview';
-const IMAGE_MODEL = 'gemini-3-pro-image-preview';
-const EDIT_MODEL = 'gemini-3-pro-image-preview';
+// Updated to use 'gemini-2.5-flash' series for broader accessibility (supports non-billing keys) and speed
+const TEXT_MODEL = 'gemini-2.5-flash';
+const IMAGE_MODEL = 'gemini-2.5-flash-image';
+const EDIT_MODEL = 'gemini-2.5-flash-image';
 
 const getLevelInstruction = (level: ComplexityLevel): string => {
   switch (level) {
@@ -123,7 +123,7 @@ export const researchTopicForPrompt = async (
 };
 
 export const generateInfographicImage = async (prompt: string): Promise<string> => {
-  // Use Gemini 3 Pro Image Preview for generation
+  // Use Gemini 2.5 Flash Image for generation
   const response = await getAi().models.generateContent({
     model: IMAGE_MODEL,
     contents: {
